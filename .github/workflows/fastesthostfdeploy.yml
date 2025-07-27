@@ -30,16 +30,35 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install imagemin and plugins
+      - name: Install CLI tools
         run: |
           npm install -g imagemin-cli imagemin-mozjpeg imagemin-pngquant imagemin-svgo
+          sudo apt-get update && sudo apt-get install -y webp
 
-      - name: Compress Images
+      - name: Compress Images (JPG, PNG, SVG)
         run: |
           find . -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.svg" \) | while read -r file; do
             echo "Compressing: $file"
             imagemin "$file" > "$file.tmp" && mv "$file.tmp" "$file"
           done
+
+      - name: Convert PNG to WebP
+        run: |
+          find . -type f -iname "*.png" | while read -r file; do
+            webp_file="${file%.png}.webp"
+            echo "Converting: $file → $webp_file"
+            cwebp -q 80 "$file" -o "$webp_file"
+          done
+
+      - name: Replace .png with .webp in HTML
+        run: |
+          find . -type f -iname "*.html" | while read -r html; do
+            echo "Updating $html"
+            sed -i 's/\.png/\.webp/g' "$html"
+          done
+      
+      - name: Remove PNG files
+        run: find . -type f -iname "*.png" -delete
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
