@@ -36,8 +36,10 @@ jobs:
 
       - name: Compress Images
         run: |
-          find . -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.svg" \) -exec echo "Compressing: {}" \;
-          imagemin '**/*.{jpg,jpeg,png,svg}' --out-dir=.
+          find . -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.svg" \) | while read -r file; do
+            echo "Compressing: $file"
+            imagemin "$file" > "$file.tmp" && mv "$file.tmp" "$file"
+          done
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
