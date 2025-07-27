@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahnaf</title>
+    <title>ahnaf.id | Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
@@ -37,6 +37,7 @@
             margin: 1rem auto 2rem;
             opacity: 0.9;
         }
+
     </style>
 </head>
 <body>
@@ -51,19 +52,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav w-100 d-flex justify-content-evenly">
                     <li class="nav-item">
-                        <a class="nav-link text-dark fs-4 fw-normal fw-lg-bold" href="#projects">Projects</a>
+                        <a class="nav-link text-primary fs-4 fw-normal fw-lg-bold">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark fs-4 fw-normal fw-lg-bold" href="#projects">Projects</a>
+                        <a class="nav-link text-dark fs-4 fw-normal fw-lg-bold" href="/projects/all.html">Projects</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark fs-4 fw-normal fw-lg-bold" href="#projects">Projects</a>
+                        <a class="nav-link text-dark fs-4 fw-normal fw-lg-bold" href="/projects/future.html">Future Projects</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark fs-4 fw-normal fw-lg-bold" href="#skills">Skills</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark fs-4 fw-normal fw-lg-bold" href="#contact">Contact</a>
+                        <a class="nav-link text-dark fs-4 fw-normal fw-lg-bold" href="/about.html">About</a>
                     </li>
                 </ul>
             </div>
@@ -90,7 +88,7 @@
 
 	<section id="projects" class="py-5 bg-light">
 	    <div class="container">
-	        <h2 class="text-center mb-5">My Projects</h2>
+	        <h2 class="text-center mb-5">My Latest Projects</h2>
 	        <div class="row g-4">
 	            <div class="col-md-4 d-flex">
 	                <div class="card project-card h-100 d-flex flex-column">
@@ -106,10 +104,12 @@
 	                            <span class="badge bg-warning text-dark">Serverless Deployment</span>
 	                        </div>
 	                        <div class="mt-auto text-start">
-	                            <a href="/projects/chatglance.html" class="btn btn-primary">View Project</a>
+	                            <a href="https://github.com/ahnaf505/ChatGlance" class="btn btn-primary">View Project</a>
+	                            <a href="https://chatglance.ahnaf.id" class="btn btn-danger">Live Demo</a>
 	                        </div>
 	                    </div>
 	                </div>
+	    
 	            </div>
 	
 	            <div class="col-md-4 d-flex">
@@ -187,7 +187,7 @@
                         <span class="badge bg-dark skill-badge">Git</span>
                         <span class="badge bg-info skill-badge">Data Analysis</span>
                         <span class="badge bg-success skill-badge">AI Integration</span>
-                        <span class="badge bg-primary skill-badge">REST API</span>
+                        <span class="badge bg-primary skill-badge">American English</span>
                     </div>
                 </div>
             </div>
@@ -199,14 +199,10 @@
             <h2 class="text-center mb-5">Get In Touch</h2>
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                    <form>
+                    <form id="contactForm">
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
                             <input type="text" class="form-control" id="name" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" required>
                         </div>
                         <div class="mb-3">
                             <label for="message" class="form-label">Message</label>
@@ -222,14 +218,29 @@
     <footer class="text-center">
         <div class="container">
             <div class="mb-4">
-                <a href="#" class="text-dark mx-2"><i class="bi bi-github fs-3"></i></a>
-                <a href="#" class="text-dark mx-2"><i class="bi bi-linkedin fs-3"></i></a>
-                <a href="#" class="text-dark mx-2"><i class="bi bi-twitter fs-3"></i></a>
-                <a href="#" class="text-dark mx-2"><i class="bi bi-envelope fs-3"></i></a>
+                <a href="https://github.com/ahnaf505" class="text-dark mx-2"><i class="bi bi-github fs-3"></i></a>
+                <a href="mailto:personal@ahnaf.id" class="text-dark mx-2"><i class="bi bi-envelope fs-3"></i></a>
             </div>
-            <p>2025&copy;ahnaf.id. All rights reserved.</p>
+            <p>2025 &copy; ahnaf.id. All rights reserved.</p>
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent actual form submission
+    
+            const name = encodeURIComponent(document.getElementById('name').value.trim());
+            const message = encodeURIComponent(document.getElementById('message').value.trim());
+    
+            const subject = encodeURIComponent("New message from portfolio site");
+            const body = `Name: ${name}%0A%0AMessage:%0A${message}`;
+    
+            // Construct mailto URL
+            const mailtoURL = `mailto:business@ahnaf.id?subject=${subject}&body=${body}`;
+    
+            // Open default mail client
+            window.location.href = mailtoURL;
+        });
+    </script>
 </body>
 </html>
