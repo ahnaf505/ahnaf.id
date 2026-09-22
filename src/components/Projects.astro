@@ -1,0 +1,107 @@
+---
+interface Project {
+  name: string;
+  tagline: string;
+  description: string;
+  tags: string[];
+  link?: string;
+  featured?: boolean;
+}
+
+const projects: Project[] = [
+  {
+    name: "Teach4Learn",
+    tagline: "AI-powered learning, built differently.",
+    description:
+      "Teach4Learn flips the traditional study model on its head. Instead of passively reading or watching, you're challenged to teach — and in doing so, you actually learn. Powered by a conversational AI that plays the role of your student, it probes your understanding, surfaces gaps, and adapts to your pace. Think of it as the Feynman Technique, supercharged with the intelligence of a large language model.",
+    tags: ["AI / LLM", "EdTech", "Full Stack"],
+    link: "#",
+    featured: true,
+  },
+  {
+    name: "Project Two",
+    tagline: "Coming soon.",
+    description:
+      "Something new is in the works. Stay tuned.",
+    tags: ["TBD"],
+    featured: false,
+  },
+  {
+    name: "Project Three",
+    tagline: "Coming soon.",
+    description:
+      "Another idea taking shape.",
+    tags: ["TBD"],
+    featured: false,
+  },
+];
+---
+
+<section id="projects" class="py-28 px-6">
+  <div class="max-w-5xl mx-auto">
+    <p class="text-xs font-semibold uppercase tracking-widest text-violet-400 mb-4">Projects</p>
+    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-14 leading-snug">
+      Things I've built
+    </h2>
+
+    <div class="space-y-5">
+      <!-- Featured project -->
+      {projects.filter(p => p.featured).map(project => (
+        <div class="group relative p-8 rounded-2xl border border-violet-500/20 bg-gradient-to-br from-violet-950/30 to-transparent hover:border-violet-500/40 transition-all duration-300 hover:shadow-[0_0_40px_rgba(124,58,237,0.08)]">
+          <!-- "Latest" pill -->
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-violet-500/15 border border-violet-500/25 text-violet-300 text-xs font-medium mb-5">
+            <span class="w-1.5 h-1.5 bg-violet-400 rounded-full"></span>
+            Latest innovation
+          </div>
+
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
+            <div>
+              <h3 class="text-2xl font-bold text-white mb-1">{project.name}</h3>
+              <p class="text-violet-300 text-sm font-medium">{project.tagline}</p>
+            </div>
+            {project.link && (
+              <a
+                href={project.link}
+                class="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-violet-600 hover:bg-violet-500 text-white text-sm font-medium transition-all duration-200 hover:shadow-[0_0_20px_rgba(124,58,237,0.4)]"
+              >
+                Visit
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            )}
+          </div>
+
+          <p class="text-slate-400 leading-relaxed mb-6 max-w-3xl">{project.description}</p>
+
+          <div class="flex flex-wrap gap-2">
+            {project.tags.map(tag => (
+              <span class="px-3 py-1 rounded-full text-xs font-medium text-violet-300 border border-violet-500/20 bg-violet-500/5">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+
+      <!-- Other projects grid -->
+      <div class="grid sm:grid-cols-2 gap-5 pt-2">
+        {projects.filter(p => !p.featured).map(project => (
+          <div class="p-6 rounded-xl border border-white/5 bg-white/[0.02] hover:border-white/10 transition-all duration-300">
+            <h3 class="text-lg font-semibold text-white mb-1">{project.name}</h3>
+            <p class="text-sm text-slate-500 mb-3">{project.tagline}</p>
+            <p class="text-sm text-slate-500 leading-relaxed mb-4">{project.description}</p>
+            <div class="flex flex-wrap gap-2">
+              {project.tags.map(tag => (
+                <span class="px-2.5 py-0.5 rounded-full text-xs text-slate-500 border border-white/5">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
