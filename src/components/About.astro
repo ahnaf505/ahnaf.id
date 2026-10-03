@@ -45,15 +45,10 @@ const capabilities = [
         </h2>
         <div class="about-prose">
           <p>
-            I am a developer based in Indonesia with an active focus on systems design,
-            security research, and intelligent tooling. My technical intuition is grounded
-            in looking beneath conventional layers — analyzing protocol quirks, building
-            low-overhead agents, and reverse engineering data flows where standard tools fall short.
+            I am a developer based in Indonesia with an active focus on systems design, security research, and intelligent tooling. My technical intuition is grounded in looking beneath the layers, building efficient apps, and reverse engineering data flows where standard tools fall short.
           </p>
           <p>
-            When building product software, that same disciplined mindset carries over:
-            building fast, resilient applications that treat the user's attention with respect
-            and prioritize correctness above cosmetic novelty.
+            I build through rapid iteration, getting a working version running early and refining it based on what actually needs fixing. I focus on building efficient systems, shipping quickly, and keeping the implementation focused. Every iteration should make the system more robust while leaving the codebase simpler than before.
           </p>
         </div>
 
@@ -122,7 +117,7 @@ const capabilities = [
 
   .about-grid {
     display: grid;
-    grid-template-columns: 1.25fr 0.9fr;
+    grid-template-columns: 1.15fr 1fr;
     gap: 4rem;
     align-items: start;
   }
@@ -165,6 +160,7 @@ const capabilities = [
     background: var(--surface);
     border: none;
     border-radius: 6px;
+  }
 
   .principle-title {
     font-family: var(--font-heading);
@@ -194,9 +190,9 @@ const capabilities = [
     font-weight: 700;
     letter-spacing: -0.01em;
     color: var(--text);
-    padding-bottom: 1rem;
     border: none;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.75rem;
+  }
 
   .capabilities-list {
     display: flex;
@@ -210,26 +206,33 @@ const capabilities = [
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    color: #60a5fa;
-    margin-bottom: 0.65rem;
+    color: var(--brand-primary);
+    margin-bottom: 0.75rem;
   }
 
   .cap-items {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.5rem;
   }
 
   .cap-pill {
-    font-size: 0.8125rem;
-    font-family: var(--font-mono);
+    display: flex;
+    align-items: center;
+    padding: 0.65rem 0.875rem;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    line-height: 1.45;
     color: var(--text);
     background: var(--surface-raised);
-    padding: 0.35rem 0.65rem;
-    border-radius: 4px;
     border: none;
+    border-radius: 6px;
+  }
+
+  .cap-pill:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
   }
 </style>
