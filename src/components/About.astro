@@ -16,16 +16,16 @@ const principles = [
 
 const capabilities = [
   {
-    category: "Languages & Runtimes",
-    items: ["Rust", "Python", "TypeScript / Node.js", "Go", "SQL (PostgreSQL, SQLite)"]
+    category: "Languages",
+    items: ["Rust", "Python", "TypeScript", "Go", "SQL", "Shell"]
   },
   {
     category: "Systems & Security",
-    items: ["Reverse Engineering", "Protocol Analysis", "Distributed C2 & Agents", "Data Scraping Engines", "Linux Internals"]
+    items: ["Reverse Engineering", "Protocol Analysis", "Linux Internals", "C2 & Agent Design", "Scraping Pipelines", "Cryptography"]
   },
   {
-    category: "Full Stack & Web",
-    items: ["Astro", "React & Next.js", "Tailwind CSS", "FastAPI", "Redis", "Docker"]
+    category: "Frameworks & Tools",
+    items: ["Astro", "React / Next.js", "Tailwind CSS", "FastAPI", "PostgreSQL", "Redis", "Docker"]
   }
 ];
 ---
@@ -63,7 +63,10 @@ const capabilities = [
       </div>
 
       <div class="capabilities-panel">
-        <h3 class="panel-header">Core Capabilities</h3>
+        <h3 class="panel-header">My Working Set</h3>
+        <p class="panel-sub">
+          The tools I use to build reliable software, and the underlying systems I deconstruct to truly understand.
+        </p>
         <div class="capabilities-list">
           {capabilities.map(group => (
             <div class="cap-group">
@@ -191,7 +194,14 @@ const capabilities = [
     letter-spacing: -0.01em;
     color: var(--text);
     border: none;
-    margin-bottom: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .panel-sub {
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0 0 1.75rem;
   }
 
   .capabilities-list {
