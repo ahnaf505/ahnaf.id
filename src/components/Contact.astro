@@ -1,18 +1,4 @@
 ---
-const channels = [
-  {
-    name: "Email",
-    value: "ahnaf@ahnaf.id",
-    href: "mailto:ahnaf@ahnaf.id",
-    desc: "Direct communication for projects, consulting, or technical inquiries."
-  },
-  {
-    name: "GitHub",
-    value: "github.com/ahnaf505",
-    href: "https://github.com/ahnaf505",
-    desc: "Code repositories, experiments, open-source utilities."
-  }
-];
 ---
 
 <section id="contact" class="contact">
@@ -20,28 +6,44 @@ const channels = [
 
     <div class="section-badge">
       <span class="badge-index">03</span>
-      <span class="badge-title">Direct Inquiries</span>
+      <span class="badge-title">Get in Touch</span>
     </div>
 
     <div class="contact-layout">
       <div class="contact-header">
-        <h2 class="contact-heading">Initiate Contact</h2>
+        <h2 class="contact-heading">Contact Me</h2>
         <p class="contact-sub">
-          Available for technical consulting, architecture reviews, and high-impact software engineering roles.
+          Have an interesting project, engineering challenge, or just want to discuss ideas?
+          My inbox is always open.
         </p>
       </div>
 
-      <div class="channels-grid">
-        {channels.map(c => (
-          <a href={c.href} target={c.href.startsWith('mailto') ? undefined : "_blank"} rel="noopener noreferrer" class="channel-card">
-            <div class="channel-top">
-              <span class="channel-name">{c.name}</span>
-              <span class="channel-arrow" aria-hidden="true">↗</span>
-            </div>
-            <span class="channel-value">{c.value}</span>
-            <p class="channel-desc">{c.desc}</p>
+      <!-- Prominent featured email hero card -->
+      <a href="mailto:ahnaf@ahnaf.id" class="email-hero-card">
+        <div class="email-card-content">
+          <div class="email-badge">
+            <span class="pulse-ring" aria-hidden="true"></span>
+            Direct Inquiries
+          </div>
+          <span class="email-address">ahnaf@ahnaf.id</span>
+          <p class="email-note">Click to send an email — I usually respond within 24 hours.</p>
+        </div>
+        <div class="email-action-pill">
+          <span>Compose Email</span>
+          <span class="action-arrow" aria-hidden="true">↗</span>
+        </div>
+      </a>
+
+      <!-- Secondary channels row -->
+      <div class="secondary-channels">
+        <span class="secondary-title">Also find me on:</span>
+        <div class="channels-links">
+          <a href="https://github.com/ahnaf505" target="_blank" rel="noopener noreferrer" class="channel-pill">
+            <span class="channel-icon" aria-hidden="true">⌥</span>
+            <span>GitHub (ahnaf505)</span>
+            <span class="pill-arrow" aria-hidden="true">↗</span>
           </a>
-        ))}
+        </div>
       </div>
     </div>
 
@@ -50,7 +52,7 @@ const channels = [
 
 <style>
   .contact {
-    padding: 7rem 0;
+    padding: 7rem 0 8rem;
     border: none;
   }
 
@@ -83,12 +85,12 @@ const channels = [
   .contact-layout {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 2.5rem;
   }
 
   .contact-heading {
     font-family: var(--font-heading);
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(2.25rem, 4.5vw, 3.25rem);
     font-weight: 800;
     letter-spacing: -0.03em;
     color: var(--text);
@@ -96,82 +98,177 @@ const channels = [
   }
 
   .contact-sub {
-    font-size: 1rem;
+    font-size: 1.05rem;
     color: var(--muted);
     max-width: 52ch;
     line-height: 1.65;
     margin: 0;
   }
 
-  .channels-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .channel-card {
-    background: var(--surface);
-    border: none;
-    border-radius: 8px;
-    padding: 1.75rem;
+  /* Prominent Email Card */
+  .email-hero-card {
+    background: linear-gradient(135deg, var(--surface) 0%, var(--surface-raised) 100%);
+    border-radius: 12px;
+    padding: 2.5rem;
     text-decoration: none;
     display: flex;
-    flex-direction: column;
-    transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
-  }
-
-  .channel-card:hover {
-    transform: translateY(-2px);
-    background: var(--surface-raised);
-    box-shadow: 0 4px 20px rgba(19, 54, 124, 0.25);
-  }
-
-  .channel-top {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.75rem;
+    justify-content: space-between;
+    gap: 2rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
   }
 
-  .channel-name {
+  .email-hero-card:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(135deg, var(--surface-raised) 0%, #171b28 100%);
+    box-shadow: 0 12px 35px rgba(19, 54, 124, 0.35);
+  }
+
+  .email-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .email-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     font-family: var(--font-mono);
     font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
     color: #60a5fa;
     font-weight: 600;
-
-  .channel-arrow {
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
-    color: var(--muted);
-    transition: color 0.15s ease, transform 0.15s ease;
   }
 
-  .channel-card:hover .channel-arrow {
-    color: #60a5fa;
+  .pulse-ring {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--brand-primary);
+    box-shadow: 0 0 10px rgba(96, 165, 250, 0.8);
+  }
+
+  .email-address {
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 3.2vw, 2.35rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--text);
+    transition: color 0.15s ease;
+  }
+
+  .email-hero-card:hover .email-address {
+    color: #ffffff;
+  }
+
+  .email-note {
+    font-size: 0.875rem;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .email-action-pill {
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.45rem;
+    background: var(--brand-primary);
+    color: #ffffff;
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .email-hero-card:hover .email-action-pill {
+    background: var(--brand-hover);
+    transform: scale(1.02);
+  }
+
+  .action-arrow {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    transition: transform 0.15s ease;
+  }
+
+  .email-hero-card:hover .action-arrow {
     transform: translate(2px, -2px);
   }
 
-  .channel-value {
-    font-family: var(--font-heading);
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 0.5rem;
-    word-break: break-all;
+  /* Secondary Channels */
+  .secondary-channels {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    padding-top: 0.5rem;
   }
 
-  .channel-desc {
-    font-size: 0.825rem;
+  .secondary-title {
+    font-size: 0.875rem;
     color: var(--muted);
-    line-height: 1.5;
-    margin: 0;
-    margin-top: auto;
   }
 
-  .channel-card:focus-visible {
+  .channels-links {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .channel-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1rem;
+    background: var(--surface);
+    color: var(--text-soft);
+    font-size: 0.825rem;
+    font-family: var(--font-mono);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  .channel-pill:hover {
+    background: var(--surface-raised);
+    color: #ffffff;
+  }
+
+  .channel-icon {
+    color: #60a5fa;
+  }
+
+  .pill-arrow {
+    color: var(--muted);
+    font-size: 0.85rem;
+    transition: transform 0.15s ease, color 0.15s ease;
+  }
+
+  .channel-pill:hover .pill-arrow {
+    color: #60a5fa;
+    transform: translate(1px, -1px);
+  }
+
+  .email-hero-card:focus-visible,
+  .channel-pill:focus-visible {
     outline: 2px solid var(--brand-primary);
     outline-offset: 3px;
+  }
+
+  @media (max-width: 680px) {
+    .email-hero-card {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.75rem;
+    }
+    .email-action-pill {
+      width: 100%;
+      justify-content: center;
+    }
   }
 </style>
