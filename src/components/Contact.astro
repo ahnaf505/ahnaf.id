@@ -18,41 +18,17 @@
         </p>
       </div>
 
-      <!-- Elevated, tactile Email Command Deck card -->
-      <div class="email-card-wrapper">
-        <div class="card-glow" aria-hidden="true"></div>
-        <div class="email-card">
-          <div class="card-top-bar">
-            <div class="status-indicator">
-              <span class="status-dot"></span>
-              <span class="status-label">Direct Communication Channel</span>
-            </div>
-            <span class="response-badge">Response within 24h</span>
-          </div>
-
-          <div class="card-main">
-            <div class="email-info">
-              <span class="email-label">PRIMARY INBOX</span>
-              <a href="mailto:ahnaf@ahnaf.id" class="email-address-link" title="Send email to ahnaf@ahnaf.id">
-                <span class="email-text">ahnaf@ahnaf.id</span>
-                <span class="email-copy-icon" aria-hidden="true">✉</span>
-              </a>
-              <p class="email-desc">Open for consulting, technical architecture, and collaboration.</p>
-            </div>
-
-            <div class="card-actions">
-              <a href="mailto:ahnaf@ahnaf.id" class="primary-btn">
-                <span>Compose Email</span>
-                <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M4.5 11.5L11.5 4.5M11.5 4.5H6.5M11.5 4.5V9.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
+      <!-- Clean, unboxed primary email link with preserved typography -->
+      <div class="email-display-wrap">
+        <a href="mailto:ahnaf@ahnaf.id" class="email-address-link" title="Send email to ahnaf@ahnaf.id">
+          <span class="email-text">ahnaf@ahnaf.id</span>
+          <svg class="email-arrow" width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
       </div>
 
-      <!-- Secondary Links Deck -->
+      <!-- Secondary profiles -->
       <div class="network-bar">
         <span class="network-label">Connected Profiles</span>
         <div class="network-links">
@@ -78,6 +54,7 @@
   .contact {
     padding: 7rem 0 8.5rem;
     position: relative;
+    border: none;
   }
 
   .contact-inner {
@@ -109,7 +86,7 @@
   .contact-layout {
     display: flex;
     flex-direction: column;
-    gap: 2.75rem;
+    gap: 3rem;
   }
 
   .contact-header {
@@ -135,121 +112,20 @@
     margin: 0;
   }
 
-  /* Tactile, elevated card container */
-  .email-card-wrapper {
-    position: relative;
-    border-radius: 14px;
-  }
-
-  .card-glow {
-    position: absolute;
-    inset: -1px;
-    background: linear-gradient(135deg, rgba(29, 78, 216, 0.45) 0%, rgba(19, 54, 124, 0.2) 50%, rgba(29, 78, 216, 0.05) 100%);
-    border-radius: 15px;
-    z-index: 0;
-    opacity: 0.8;
-    filter: blur(1px);
-    transition: opacity 0.25s ease, filter 0.25s ease;
-  }
-
-  .email-card-wrapper:hover .card-glow {
-    opacity: 1;
-    filter: blur(2px);
-  }
-
-  .email-card {
-    position: relative;
-    z-index: 1;
-    background: radial-gradient(120% 120% at 0% 0%, #151824 0%, #0d0f17 100%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 14px;
-    padding: 2rem 2.25rem;
+  /* Unboxed pure email link */
+  .email-display-wrap {
     display: flex;
-    flex-direction: column;
-    gap: 1.75rem;
-    box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-    transition: transform 0.2s ease, border-color 0.2s ease;
-  }
-
-  .email-card-wrapper:hover .email-card {
-    border-color: rgba(96, 165, 250, 0.35);
-    transform: translateY(-2px);
-  }
-
-  .card-top-bar {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-    padding-bottom: 1.25rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  }
-
-  .status-indicator {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.625rem;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: #93c5fd;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-weight: 500;
-  }
-
-  .status-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: #3b82f6;
-    box-shadow: 0 0 10px #3b82f6;
-    animation: status-pulse 2.5s infinite ease-in-out;
-  }
-
-  @keyframes status-pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.45; transform: scale(0.85); }
-  }
-
-  .response-badge {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--muted);
-    background: rgba(255, 255, 255, 0.04);
-    padding: 0.3rem 0.65rem;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-  }
-
-  .card-main {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-
-  .email-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-
-  .email-label {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    font-weight: 600;
-    color: var(--muted);
-    letter-spacing: 0.1em;
+    padding: 0.5rem 0;
   }
 
   .email-address-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 1rem;
     text-decoration: none;
     width: fit-content;
+    transition: transform 0.15s ease;
   }
 
   .email-text {
@@ -261,72 +137,28 @@
     transition: color 0.15s ease, text-shadow 0.15s ease;
   }
 
-  .email-copy-icon {
-    font-size: 1.25rem;
+  .email-arrow {
     color: var(--muted);
     transition: color 0.15s ease, transform 0.15s ease;
   }
 
   .email-address-link:hover .email-text {
     color: #93c5fd;
-    text-shadow: 0 0 24px rgba(59, 130, 246, 0.4);
+    text-shadow: 0 0 28px rgba(59, 130, 246, 0.45);
   }
 
-  .email-address-link:hover .email-copy-icon {
+  .email-address-link:hover .email-arrow {
     color: #60a5fa;
-    transform: translateY(-1px);
+    transform: translate(3px, -3px);
   }
 
-  .email-desc {
-    font-size: 0.925rem;
-    color: var(--muted);
-    margin: 0;
-    margin-top: 0.25rem;
-    max-width: 48ch;
-  }
-
-  .card-actions {
-    display: flex;
-    align-items: center;
-  }
-
-  .primary-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.65rem;
-    padding: 0.95rem 1.65rem;
-    background: #1D4ED8;
-    color: #ffffff;
-    font-family: var(--font-heading);
-    font-size: 0.925rem;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 9px;
-    box-shadow: 0 4px 18px rgba(29, 78, 216, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
-  }
-
-  .primary-btn:hover {
-    background: #2563eb;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  }
-
-  .btn-arrow {
-    transition: transform 0.15s ease;
-  }
-
-  .primary-btn:hover .btn-arrow {
-    transform: translate(2px, -2px);
-  }
-
-  /* Secondary Network Bar */
+  /* Secondary Profiles Bar */
   .network-bar {
     display: flex;
     align-items: center;
     gap: 1.5rem;
     flex-wrap: wrap;
-    padding: 0.5rem 0.25rem 0;
+    padding-top: 0.5rem;
   }
 
   .network-label {
@@ -349,20 +181,18 @@
     align-items: center;
     gap: 0.625rem;
     padding: 0.65rem 1.1rem;
-    background: rgba(22, 24, 34, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.07);
+    background: transparent;
+    border: none;
     border-radius: 8px;
-    color: var(--text);
+    color: var(--text-soft);
     text-decoration: none;
     font-size: 0.875rem;
-    transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+    transition: color 0.15s ease, transform 0.15s ease;
   }
 
   .network-item:hover {
-    background: #1c202e;
-    border-color: rgba(96, 165, 250, 0.3);
-    transform: translateY(-1px);
     color: #ffffff;
+    transform: translateY(-1px);
   }
 
   .network-icon {
@@ -391,27 +221,13 @@
   }
 
   .email-address-link:focus-visible,
-  .primary-btn:focus-visible,
   .network-item:focus-visible {
     outline: 2px solid #3b82f6;
     outline-offset: 4px;
-    border-radius: 6px;
+    border-radius: 4px;
   }
 
   @media (max-width: 720px) {
-    .email-card {
-      padding: 1.5rem;
-      gap: 1.5rem;
-    }
-    .card-main {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1.5rem;
-    }
-    .primary-btn {
-      width: 100%;
-      justify-content: center;
-    }
     .network-bar {
       flex-direction: column;
       align-items: flex-start;
