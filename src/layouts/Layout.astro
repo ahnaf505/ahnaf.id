@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-
+import AmbientBackground from '../components/AmbientBackground.astro';
 interface Props {
   title: string;
   description?: string;
@@ -41,6 +41,7 @@ const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
     <title>{title}</title>
   </head>
   <body class="min-h-screen">
+    <AmbientBackground />
     <slot />
   </body>
 </html>
