@@ -1,0 +1,344 @@
+---
+---
+
+<div class="ambient-background" aria-hidden="true">
+  <!-- Interactive mouse dynamic spotlight -->
+  <div class="mouse-glow" id="mouseGlow"></div>
+
+  <!-- Ambient perspective grid lines with scan beam -->
+  <div class="bg-grid"></div>
+  <div class="scan-beam"></div>
+
+  <!-- Dynamic floating gradient orbs -->
+  <div class="glow-orb orb-primary"></div>
+  <div class="glow-orb orb-deep"></div>
+  <div class="glow-orb orb-cyan"></div>
+  <div class="glow-orb orb-accent"></div>
+
+  <!-- Interactive canvas particles (stars / cyber nodes connected with light pulses) -->
+  <canvas id="ambientCanvas" class="ambient-canvas"></canvas>
+
+  <!-- Film grain noise texture overlay -->
+  <div class="bg-noise"></div>
+</div>
+
+<script>
+  // Mouse follower spotlight
+  const glow = document.getElementById('mouseGlow');
+  if (glow) {
+    let currentX = window.innerWidth / 2;
+    let currentY = window.innerHeight / 2;
+    let targetX = currentX;
+    let targetY = currentY;
+
+    window.addEventListener('pointermove', (e) => {
+      targetX = e.clientX;
+      targetY = e.clientY;
+      glow.style.opacity = '1';
+    }, { passive: true });
+
+    document.addEventListener('mouseleave', () => {
+      glow.style.opacity = '0';
+    });
+
+    const updateMouse = () => {
+      currentX += (targetX - currentX) * 0.08;
+      currentY += (targetY - currentY) * 0.08;
+      glow.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+      requestAnimationFrame(updateMouse);
+    };
+    updateMouse();
+  }
+
+  // Interactive Particle Constellation Canvas
+  const canvas = document.getElementById('ambientCanvas') as HTMLCanvasElement | null;
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    if (ctx) {
+      let width = (canvas.width = window.innerWidth);
+      let height = (canvas.height = window.innerHeight);
+
+      const resize = () => {
+        if (!canvas) return;
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      };
+      window.addEventListener('resize', resize, { passive: true });
+
+      interface Particle {
+        x: number;
+        y: number;
+        vx: number;
+        vy: number;
+        radius: number;
+        baseAlpha: number;
+        alpha: number;
+      }
+
+      const count = Math.min(Math.floor((width * height) / 28000), 55);
+      const particles: Particle[] = [];
+
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.35,
+          vy: (Math.random() - 0.5) * 0.35,
+          radius: Math.random() * 1.5 + 0.5,
+          baseAlpha: Math.random() * 0.4 + 0.15,
+          alpha: Math.random() * 0.4 + 0.15,
+        });
+      }
+
+      let animId: number;
+      const render = () => {
+        ctx.clearRect(0, 0, width, height);
+
+        // Update & draw particles
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < 0) p.x = width;
+          else if (p.x > width) p.x = 0;
+          if (p.y < 0) p.y = height;
+          else if (p.y > height) p.y = 0;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(96, 165, 250, ${p.alpha})`;
+          ctx.fill();
+
+          // Connect nearby particles
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dx = p.x - p2.x;
+            const dy = p.y - p2.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < 130) {
+              const lineAlpha = (1 - dist / 130) * 0.12;
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = `rgba(29, 78, 216, ${lineAlpha})`;
+              ctx.lineWidth = 0.8;
+              ctx.stroke();
+            }
+          }
+        }
+
+        animId = requestAnimationFrame(render);
+      };
+
+      // Check user reduced motion preference
+      const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if (!mediaQuery.matches) {
+        render();
+      }
+
+      mediaQuery.addEventListener('change', (e) => {
+        if (e.matches) {
+          cancelAnimationFrame(animId);
+          ctx.clearRect(0, 0, width, height);
+        } else {
+          render();
+        }
+      });
+    }
+  }
+</script>
+
+<style>
+  .ambient-background {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+    background-color: var(--bg);
+  }
+
+  /* Interactive smooth mouse tracking glow spotlight */
+  .mouse-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 600px;
+    height: 600px;
+    margin-top: -300px;
+    margin-left: -300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(29, 78, 216, 0.15) 0%, rgba(19, 54, 124, 0.05) 50%, transparent 70%);
+    filter: blur(50px);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    will-change: transform;
+  }
+
+  /* Technical Grid Lines with depth mask */
+  .bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 95% 75% at 50% 30%, #000 35%, transparent 85%);
+    -webkit-mask-image: radial-gradient(ellipse 95% 75% at 50% 30%, #000 35%, transparent 85%);
+  }
+
+  /* Subtle vertical cyber scanning line */
+  .scan-beam {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(to bottom, transparent, rgba(29, 78, 216, 0.05), transparent);
+    animation: scan 14s ease-in-out infinite alternate;
+  }
+
+  /* Interactive particle canvas */
+  .ambient-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Glowing atmospheric color blooms */
+  .glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    will-change: transform, opacity;
+  }
+
+  .orb-primary {
+    top: -10%;
+    left: 15%;
+    width: 70vw;
+    max-width: 900px;
+    height: 65vh;
+    max-height: 700px;
+    background: radial-gradient(circle, rgba(29, 78, 216, 0.22) 0%, rgba(19, 54, 124, 0.1) 60%, transparent 80%);
+    animation: drift-primary 20s ease-in-out infinite alternate;
+  }
+
+  .orb-deep {
+    top: 40%;
+    right: -10%;
+    width: 55vw;
+    max-width: 650px;
+    height: 55vh;
+    background: radial-gradient(circle, rgba(19, 54, 124, 0.2) 0%, rgba(29, 78, 216, 0.06) 65%, transparent 85%);
+    animation: drift-deep 26s ease-in-out infinite alternate;
+  }
+
+  .orb-cyan {
+    top: 25%;
+    left: -10%;
+    width: 45vw;
+    max-width: 550px;
+    height: 45vh;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, rgba(19, 54, 124, 0.05) 55%, transparent 75%);
+    animation: drift-cyan 24s ease-in-out infinite alternate;
+  }
+
+  .orb-accent {
+    bottom: -15%;
+    left: 30%;
+    width: 50vw;
+    max-width: 600px;
+    height: 50vh;
+    background: radial-gradient(circle, rgba(29, 78, 216, 0.14) 0%, transparent 70%);
+    animation: drift-accent 22s ease-in-out infinite alternate;
+  }
+
+  /* Film grain noise texture overlay */
+  .bg-noise {
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-size: 160px 160px;
+  }
+
+  @keyframes scan {
+    0% {
+      top: -10%;
+      opacity: 0;
+    }
+    15% {
+      opacity: 1;
+    }
+    85% {
+      opacity: 1;
+    }
+    100% {
+      top: 105%;
+      opacity: 0;
+    }
+  }
+
+  @keyframes drift-primary {
+    0% {
+      transform: translate3d(0, 0, 0) scale(1);
+      opacity: 0.85;
+    }
+    50% {
+      transform: translate3d(7%, 9%, 0) scale(1.1);
+      opacity: 1;
+    }
+    100% {
+      transform: translate3d(-5%, 5%, 0) scale(0.94);
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes drift-deep {
+    0% {
+      transform: translate3d(0, 0, 0) scale(1);
+      opacity: 0.7;
+    }
+    50% {
+      transform: translate3d(-9%, -7%, 0) scale(1.15);
+      opacity: 1;
+    }
+    100% {
+      transform: translate3d(5%, 6%, 0) scale(0.9);
+      opacity: 0.65;
+    }
+  }
+
+  @keyframes drift-cyan {
+    0% {
+      transform: translate3d(0, 0, 0) scale(0.95);
+    }
+    50% {
+      transform: translate3d(8%, -6%, 0) scale(1.12);
+    }
+    100% {
+      transform: translate3d(-4%, 8%, 0) scale(1);
+    }
+  }
+
+  @keyframes drift-accent {
+    0% {
+      transform: translate3d(0, 0, 0) scale(0.95);
+    }
+    100% {
+      transform: translate3d(9%, -7%, 0) scale(1.08);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .glow-orb, .scan-beam {
+      animation: none !important;
+    }
+    .ambient-canvas {
+      display: none;
+    }
+  }
+</style>
