@@ -18,33 +18,57 @@
         </p>
       </div>
 
-      <!-- Prominent featured email hero card -->
-      <a href="mailto:ahnaf@ahnaf.id" class="email-hero-card">
-        <div class="email-card-content">
-          <div class="email-badge">
-            <span class="pulse-ring" aria-hidden="true"></span>
-            Direct Inquiries
+      <!-- Elevated, tactile Email Command Deck card -->
+      <div class="email-card-wrapper">
+        <div class="card-glow" aria-hidden="true"></div>
+        <div class="email-card">
+          <div class="card-top-bar">
+            <div class="status-indicator">
+              <span class="status-dot"></span>
+              <span class="status-label">Direct Communication Channel</span>
+            </div>
+            <span class="response-badge">Response within 24h</span>
           </div>
-          <span class="email-address">ahnaf@ahnaf.id</span>
-          <p class="email-note">Click to send an email — I usually respond within 24 hours.</p>
-        </div>
-        <div class="email-action-pill">
-          <span>Compose Email</span>
-          <span class="action-arrow" aria-hidden="true">↗</span>
-        </div>
-      </a>
 
-      <!-- Secondary channels row -->
-      <div class="secondary-channels">
-        <span class="secondary-title">Also find me on:</span>
-        <div class="channels-links">
-          <a href="https://github.com/ahnaf505" target="_blank" rel="noopener noreferrer" class="channel-pill">
-            <span class="channel-icon" aria-hidden="true">⌥</span>
-            <span>GitHub (ahnaf505)</span>
-            <span class="pill-arrow" aria-hidden="true">↗</span>
+          <div class="card-main">
+            <div class="email-info">
+              <span class="email-label">PRIMARY INBOX</span>
+              <a href="mailto:ahnaf@ahnaf.id" class="email-address-link" title="Send email to ahnaf@ahnaf.id">
+                <span class="email-text">ahnaf@ahnaf.id</span>
+                <span class="email-copy-icon" aria-hidden="true">✉</span>
+              </a>
+              <p class="email-desc">Open for consulting, technical architecture, and collaboration.</p>
+            </div>
+
+            <div class="card-actions">
+              <a href="mailto:ahnaf@ahnaf.id" class="primary-btn">
+                <span>Compose Email</span>
+                <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M4.5 11.5L11.5 4.5M11.5 4.5H6.5M11.5 4.5V9.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Secondary Links Deck -->
+      <div class="network-bar">
+        <span class="network-label">Connected Profiles</span>
+        <div class="network-links">
+          <a href="https://github.com/ahnaf505" target="_blank" rel="noopener noreferrer" class="network-item">
+            <svg class="network-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+            <span class="network-name">GitHub</span>
+            <span class="network-handle">@ahnaf505</span>
+            <svg class="network-arrow" width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M4.5 11.5L11.5 4.5M11.5 4.5H6.5M11.5 4.5V9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </a>
         </div>
       </div>
+
     </div>
 
   </div>
@@ -52,8 +76,8 @@
 
 <style>
   .contact {
-    padding: 7rem 0 8rem;
-    border: none;
+    padding: 7rem 0 8.5rem;
+    position: relative;
   }
 
   .contact-inner {
@@ -85,7 +109,13 @@
   .contact-layout {
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 2.75rem;
+  }
+
+  .contact-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
   }
 
   .contact-heading {
@@ -94,181 +124,298 @@
     font-weight: 800;
     letter-spacing: -0.03em;
     color: var(--text);
-    margin-bottom: 0.75rem;
+    margin: 0;
   }
 
   .contact-sub {
     font-size: 1.05rem;
-    color: var(--muted);
+    color: var(--text-soft);
     max-width: 52ch;
     line-height: 1.65;
     margin: 0;
   }
 
-  /* Prominent Email Card */
-  .email-hero-card {
-    background: linear-gradient(135deg, var(--surface) 0%, var(--surface-raised) 100%);
-    border-radius: 12px;
-    padding: 2.5rem;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  /* Tactile, elevated card container */
+  .email-card-wrapper {
+    position: relative;
+    border-radius: 14px;
   }
 
-  .email-hero-card:hover {
-    transform: translateY(-3px);
-    background: linear-gradient(135deg, var(--surface-raised) 0%, #171b28 100%);
-    box-shadow: 0 12px 35px rgba(19, 54, 124, 0.35);
+  .card-glow {
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(135deg, rgba(29, 78, 216, 0.45) 0%, rgba(19, 54, 124, 0.2) 50%, rgba(29, 78, 216, 0.05) 100%);
+    border-radius: 15px;
+    z-index: 0;
+    opacity: 0.8;
+    filter: blur(1px);
+    transition: opacity 0.25s ease, filter 0.25s ease;
   }
 
-  .email-card-content {
+  .email-card-wrapper:hover .card-glow {
+    opacity: 1;
+    filter: blur(2px);
+  }
+
+  .email-card {
+    position: relative;
+    z-index: 1;
+    background: radial-gradient(120% 120% at 0% 0%, #151824 0%, #0d0f17 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 2rem 2.25rem;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1.75rem;
+    box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    transition: transform 0.2s ease, border-color 0.2s ease;
   }
 
-  .email-badge {
+  .email-card-wrapper:hover .email-card {
+    border-color: rgba(96, 165, 250, 0.35);
+    transform: translateY(-2px);
+  }
+
+  .card-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .status-indicator {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.625rem;
     font-family: var(--font-mono);
     font-size: 0.75rem;
+    color: #93c5fd;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #60a5fa;
-    font-weight: 600;
+    letter-spacing: 0.06em;
+    font-weight: 500;
   }
 
-  .pulse-ring {
-    width: 6px;
-    height: 6px;
+  .status-dot {
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    background-color: var(--brand-primary);
-    box-shadow: 0 0 10px rgba(96, 165, 250, 0.8);
+    background-color: #3b82f6;
+    box-shadow: 0 0 10px #3b82f6;
+    animation: status-pulse 2.5s infinite ease-in-out;
   }
 
-  .email-address {
-    font-family: var(--font-heading);
-    font-size: clamp(1.5rem, 3.2vw, 2.35rem);
-    font-weight: 800;
-    letter-spacing: -0.025em;
-    color: var(--text);
-    transition: color 0.15s ease;
+  @keyframes status-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.45; transform: scale(0.85); }
   }
 
-  .email-hero-card:hover .email-address {
-    color: #ffffff;
-  }
-
-  .email-note {
-    font-size: 0.875rem;
+  .response-badge {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
     color: var(--muted);
-    margin: 0;
-    line-height: 1.5;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 0.3rem 0.65rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
   }
 
-  .email-action-pill {
-    white-space: nowrap;
+  .card-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .email-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .email-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  .email-address-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.85rem 1.45rem;
-    background: var(--brand-primary);
+    gap: 0.75rem;
+    text-decoration: none;
+    width: fit-content;
+  }
+
+  .email-text {
+    font-family: var(--font-heading);
+    font-size: clamp(1.85rem, 4vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+    transition: color 0.15s ease, text-shadow 0.15s ease;
+  }
+
+  .email-copy-icon {
+    font-size: 1.25rem;
+    color: var(--muted);
+    transition: color 0.15s ease, transform 0.15s ease;
+  }
+
+  .email-address-link:hover .email-text {
+    color: #93c5fd;
+    text-shadow: 0 0 24px rgba(59, 130, 246, 0.4);
+  }
+
+  .email-address-link:hover .email-copy-icon {
+    color: #60a5fa;
+    transform: translateY(-1px);
+  }
+
+  .email-desc {
+    font-size: 0.925rem;
+    color: var(--muted);
+    margin: 0;
+    margin-top: 0.25rem;
+    max-width: 48ch;
+  }
+
+  .card-actions {
+    display: flex;
+    align-items: center;
+  }
+
+  .primary-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.95rem 1.65rem;
+    background: #1D4ED8;
     color: #ffffff;
     font-family: var(--font-heading);
-    font-size: 0.875rem;
+    font-size: 0.925rem;
     font-weight: 600;
-    border-radius: 8px;
-    transition: background-color 0.15s ease, transform 0.15s ease;
+    text-decoration: none;
+    border-radius: 9px;
+    box-shadow: 0 4px 18px rgba(29, 78, 216, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
   }
 
-  .email-hero-card:hover .email-action-pill {
-    background: var(--brand-hover);
-    transform: scale(1.02);
+  .primary-btn:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.3);
   }
 
-  .action-arrow {
-    font-family: var(--font-mono);
-    font-size: 1rem;
+  .btn-arrow {
     transition: transform 0.15s ease;
   }
 
-  .email-hero-card:hover .action-arrow {
+  .primary-btn:hover .btn-arrow {
     transform: translate(2px, -2px);
   }
 
-  /* Secondary Channels */
-  .secondary-channels {
+  /* Secondary Network Bar */
+  .network-bar {
     display: flex;
     align-items: center;
-    gap: 1.25rem;
+    gap: 1.5rem;
     flex-wrap: wrap;
-    padding-top: 0.5rem;
+    padding: 0.5rem 0.25rem 0;
   }
 
-  .secondary-title {
-    font-size: 0.875rem;
+  .network-label {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
     color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
   }
 
-  .channels-links {
+  .network-links {
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    flex-wrap: wrap;
   }
 
-  .channel-pill {
+  .network-item {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.55rem 1rem;
-    background: var(--surface);
-    color: var(--text-soft);
-    font-size: 0.825rem;
-    font-family: var(--font-mono);
+    gap: 0.625rem;
+    padding: 0.65rem 1.1rem;
+    background: rgba(22, 24, 34, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 8px;
+    color: var(--text);
     text-decoration: none;
-    border-radius: 6px;
-    transition: background-color 0.15s ease, color 0.15s ease;
+    font-size: 0.875rem;
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
   }
 
-  .channel-pill:hover {
-    background: var(--surface-raised);
+  .network-item:hover {
+    background: #1c202e;
+    border-color: rgba(96, 165, 250, 0.3);
+    transform: translateY(-1px);
     color: #ffffff;
   }
 
-  .channel-icon {
-    color: #60a5fa;
+  .network-icon {
+    color: #93c5fd;
   }
 
-  .pill-arrow {
+  .network-name {
+    font-family: var(--font-heading);
+    font-weight: 600;
+  }
+
+  .network-handle {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
     color: var(--muted);
-    font-size: 0.85rem;
+  }
+
+  .network-arrow {
+    color: var(--muted);
     transition: transform 0.15s ease, color 0.15s ease;
   }
 
-  .channel-pill:hover .pill-arrow {
+  .network-item:hover .network-arrow {
     color: #60a5fa;
     transform: translate(1px, -1px);
   }
 
-  .email-hero-card:focus-visible,
-  .channel-pill:focus-visible {
-    outline: 2px solid var(--brand-primary);
-    outline-offset: 3px;
+  .email-address-link:focus-visible,
+  .primary-btn:focus-visible,
+  .network-item:focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: 4px;
+    border-radius: 6px;
   }
 
-  @media (max-width: 680px) {
-    .email-hero-card {
+  @media (max-width: 720px) {
+    .email-card {
+      padding: 1.5rem;
+      gap: 1.5rem;
+    }
+    .card-main {
       flex-direction: column;
       align-items: flex-start;
-      padding: 1.75rem;
+      gap: 1.5rem;
     }
-    .email-action-pill {
+    .primary-btn {
       width: 100%;
       justify-content: center;
+    }
+    .network-bar {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.85rem;
     }
   }
 </style>
