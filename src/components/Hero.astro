@@ -1,54 +1,221 @@
 ---
 ---
 
-<section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-  <!-- Background grid -->
-  <div
-    class="absolute inset-0 opacity-[0.03]"
-    style="background-image: linear-gradient(#a78bfa 1px, transparent 1px), linear-gradient(90deg, #a78bfa 1px, transparent 1px); background-size: 50px 50px;"
-  ></div>
+<section class="hero">
+  <div class="hero-inner">
 
-  <!-- Radial glow -->
-  <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-violet-600/10 rounded-full blur-3xl pointer-events-none"></div>
-
-  <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
-    <!-- Badge -->
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 text-violet-300 text-xs font-medium mb-8">
-      <span class="w-1.5 h-1.5 bg-violet-400 rounded-full animate-pulse"></span>
-      Open to collaboration
+    <div class="hero-meta">
+      <span class="meta-badge">Systems & Engineering</span>
+      <span class="meta-sep" aria-hidden="true">/</span>
+      <span class="meta-location">Indonesia (UTC+7)</span>
     </div>
 
-    <h1 class="text-5xl sm:text-7xl font-bold tracking-tight text-white mb-6 leading-tight">
-      Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-purple-300">Ahnaf</span>
+    <h1 class="hero-title">
+      Ahnaf
     </h1>
 
-    <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-4 leading-relaxed">
-      Software engineer & builder passionate about crafting products that make a real difference.
-      Currently building <span class="text-violet-300 font-medium">Teach4Learn</span> — rethinking how people learn.
+    <p class="hero-lead">
+      Software engineer building reliable systems, reverse engineering protocol internals,
+      and creating focused tools designed to solve real problems without gratuitous abstraction.
     </p>
 
-    <p class="text-sm text-slate-500 mb-12">Based in Indonesia 🇮🇩</p>
+    <div class="hero-signals">
+      <div class="signal-item">
+        <span class="signal-label">Primary Stack</span>
+        <span class="signal-val">Rust, Python, TypeScript, Go</span>
+      </div>
+      <div class="signal-item">
+        <span class="signal-label">Focus Area</span>
+        <span class="signal-val">Distributed backends, security research, applied AI</span>
+      </div>
+      <div class="signal-item">
+        <span class="signal-label">Current Ship</span>
+        <span class="signal-val">Teach4Learn (Conversational AI Tutor)</span>
+      </div>
+    </div>
 
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-      <a
-        href="#projects"
-        class="px-7 py-3 rounded-lg bg-violet-600 hover:bg-violet-500 text-white text-sm font-medium transition-all duration-200 hover:shadow-[0_0_24px_rgba(124,58,237,0.5)]"
-      >
-        View my work
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">
+        Explore Work
+        <span class="btn-arrow" aria-hidden="true">↓</span>
       </a>
-      <a
-        href="#contact"
-        class="px-7 py-3 rounded-lg border border-white/10 hover:border-white/20 text-slate-300 text-sm font-medium transition-all duration-200 hover:text-white"
-      >
+      <a href="#about" class="btn-secondary">
+        Engineering Philosophy
+      </a>
+      <a href="#contact" class="btn-tertiary">
         Get in touch
       </a>
     </div>
-  </div>
 
-  <!-- Scroll indicator -->
-  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-600 animate-bounce">
-    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path>
-    </svg>
   </div>
 </section>
+
+<style>
+  .hero {
+    min-height: calc(100svh - 3.75rem);
+    display: flex;
+    align-items: center;
+    padding: 7.5rem 0 5rem;
+    position: relative;
+  }
+
+  .hero-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    width: 100%;
+  }
+
+  .hero-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+
+  .meta-badge {
+    color: var(--accent);
+    letter-spacing: 0.02em;
+  }
+
+  .meta-sep {
+    color: var(--border-strong);
+  }
+
+  .meta-location {
+    color: var(--muted);
+  }
+
+  .hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 7vw, 5.25rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-lead {
+    font-size: clamp(1.125rem, 2vw, 1.3125rem);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--text-soft);
+    max-width: 48ch;
+    margin-bottom: 3rem;
+  }
+
+  .hero-signals {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+    padding: 1.5rem;
+    background: var(--surface);
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 2.75rem;
+  }
+
+  .signal-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .signal-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .signal-val {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.4;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.35rem;
+    background: var(--brand-primary);
+    color: #ffffff;
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 0 16px var(--accent-glow);
+    transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .btn-primary:hover {
+    background: var(--brand-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(29, 78, 216, 0.4);
+  }
+
+  .btn-arrow {
+    transition: transform 0.15s ease;
+  }
+  .btn-primary:hover .btn-arrow {
+    transform: translateY(2px);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border-strong);
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .btn-secondary:hover {
+    background: var(--surface-raised);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  .btn-tertiary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    color: var(--muted);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .btn-tertiary:hover {
+    color: var(--text);
+  }
+
+  .btn-primary:focus-visible,
+  .btn-secondary:focus-visible,
+  .btn-tertiary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+</style>

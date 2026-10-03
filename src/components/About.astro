@@ -1,48 +1,235 @@
 ---
-const skills = [
-  { category: "Languages", items: ["TypeScript", "Python", "Rust", "Go"] },
-  { category: "Frontend", items: ["React", "Astro", "Next.js", "Tailwind CSS"] },
-  { category: "Backend", items: ["Node.js", "FastAPI", "PostgreSQL", "Redis"] },
-  { category: "Tooling", items: ["Docker", "Linux", "Git", "Vercel"] },
+const principles = [
+  {
+    title: "Mechanisms Over Assumptions",
+    desc: "Understanding what systems actually do under load, down to network protocols, memory bounds, and failure modes."
+  },
+  {
+    title: "Surgical Simplicity",
+    desc: "No speculative frameworks or premature abstractions. Write boring, high-performance code that remains maintainable six months out."
+  },
+  {
+    title: "Cognitive Utility",
+    desc: "Technology should sharpen human capability and comprehension rather than act as a noisy black box."
+  }
+];
+
+const capabilities = [
+  {
+    category: "Languages & Runtimes",
+    items: ["Rust", "Python", "TypeScript / Node.js", "Go", "SQL (PostgreSQL, SQLite)"]
+  },
+  {
+    category: "Systems & Security",
+    items: ["Reverse Engineering", "Protocol Analysis", "Distributed C2 & Agents", "Data Scraping Engines", "Linux Internals"]
+  },
+  {
+    category: "Full Stack & Web",
+    items: ["Astro", "React & Next.js", "Tailwind CSS", "FastAPI", "Redis", "Docker"]
+  }
 ];
 ---
 
-<section id="about" class="py-28 px-6">
-  <div class="max-w-5xl mx-auto">
-    <div class="grid lg:grid-cols-2 gap-16 items-start">
+<section id="about" class="about">
+  <div class="about-inner">
 
-      <!-- Left: bio -->
-      <div>
-        <p class="text-xs font-semibold uppercase tracking-widest text-violet-400 mb-4">About</p>
-        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6 leading-snug">
-          Building things that<br />
-          <span class="text-slate-400">matter</span>
+    <div class="section-badge">
+      <span class="badge-index">01</span>
+      <span class="badge-title">Background & Approach</span>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-narrative">
+        <h2 class="about-heading">
+          Engineering focused on internals, security, and products that deliver.
         </h2>
-        <div class="space-y-4 text-slate-400 leading-relaxed">
+        <div class="about-prose">
           <p>
-            I'm a full-stack developer with a deep curiosity for the intersection of technology and human experience.
-            I care about writing clean, maintainable code — and even more about shipping products that people love to use.
+            I am a developer based in Indonesia with an active focus on systems design,
+            security research, and intelligent tooling. My technical intuition is grounded
+            in looking beneath conventional layers — analyzing protocol quirks, building
+            low-overhead agents, and reverse engineering data flows where standard tools fall short.
           </p>
           <p>
-            When I'm not coding, you'll find me reading, exploring new ideas in AI, or thinking about how software can solve real-world problems in education and beyond.
+            When building product software, that same disciplined mindset carries over:
+            building fast, resilient applications that treat the user's attention with respect
+            and prioritize correctness above cosmetic novelty.
           </p>
+        </div>
+
+        <div class="principles-list">
+          {principles.map(p => (
+            <div class="principle-card">
+              <h3 class="principle-title">{p.title}</h3>
+              <p class="principle-desc">{p.desc}</p>
+            </div>
+          ))}
         </div>
       </div>
 
-      <!-- Right: skills -->
-      <div class="grid grid-cols-2 gap-4">
-        {skills.map(group => (
-          <div class="p-5 rounded-xl border border-white/5 bg-white/[0.02] hover:border-violet-500/20 transition-colors duration-300">
-            <p class="text-xs font-semibold text-violet-400 uppercase tracking-wider mb-3">{group.category}</p>
-            <ul class="space-y-1.5">
-              {group.items.map(item => (
-                <li class="text-sm text-slate-300">{item}</li>
-              ))}
-            </ul>
-          </div>
-        ))}
+      <div class="capabilities-panel">
+        <h3 class="panel-header">Core Capabilities</h3>
+        <div class="capabilities-list">
+          {capabilities.map(group => (
+            <div class="cap-group">
+              <span class="cap-category">{group.category}</span>
+              <ul class="cap-items">
+                {group.items.map(item => (
+                  <li class="cap-pill">{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </div>
-
     </div>
+
   </div>
 </section>
+
+<style>
+  .about {
+    padding: 7rem 0;
+    border: none;
+    position: relative;
+  }
+
+  .about-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    margin-bottom: 2.25rem;
+  }
+
+  .badge-index {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .badge-title {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 0.9fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  @media (max-width: 860px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 3.5rem;
+    }
+  }
+
+  .about-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 3.5vw, 2.35rem);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+    color: var(--text);
+    margin-bottom: 1.75rem;
+  }
+
+  .about-prose {
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+    color: var(--text-soft);
+    font-size: 1rem;
+    line-height: 1.75;
+    margin-bottom: 2.75rem;
+  }
+
+  .principles-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .principle-card {
+    padding: 1.25rem;
+    background: var(--surface);
+    border: none;
+    border-radius: 6px;
+
+  .principle-title {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.35rem;
+  }
+
+  .principle-desc {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .capabilities-panel {
+    background: var(--surface);
+    border: none;
+    border-radius: 8px;
+    padding: 2rem;
+  }
+
+  .panel-header {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    padding-bottom: 1rem;
+    border: none;
+    margin-bottom: 1.5rem;
+
+  .capabilities-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .cap-category {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #60a5fa;
+    margin-bottom: 0.65rem;
+  }
+
+  .cap-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .cap-pill {
+    font-size: 0.8125rem;
+    font-family: var(--font-mono);
+    color: var(--text);
+    background: var(--surface-raised);
+    padding: 0.35rem 0.65rem;
+    border-radius: 4px;
+    border: none;
+  }
+</style>

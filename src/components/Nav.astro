@@ -1,25 +1,91 @@
 ---
 const links = [
   { href: '#about', label: 'About' },
-  { href: '#projects', label: 'Projects' },
+  { href: '#projects', label: 'Work' },
   { href: '#contact', label: 'Contact' },
 ];
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 backdrop-blur-md bg-[#0a0a0f]/80">
-  <nav class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-    <a href="/" class="text-sm font-semibold tracking-wider text-white hover:text-violet-400 transition-colors">
-      ahnaf<span class="text-violet-500">.id</span>
-    </a>
-    <div class="flex items-center gap-8">
-      {links.map(link => (
-        <a
-          href={link.href}
-          class="text-sm text-slate-400 hover:text-white transition-colors duration-200"
-        >
-          {link.label}
-        </a>
-      ))}
+<header class="site-nav">
+  <div class="nav-shell">
+    <a href="/" class="nav-brand">ahnaf.id</a>
+
+    <div class="nav-right">
+
+      <nav class="nav-links" aria-label="Main Navigation">
+        {links.map(link => (
+          <a href={link.href} class="nav-link">{link.label}</a>
+        ))}
+      </nav>
     </div>
-  </nav>
+  </div>
 </header>
+
+<style>
+  .site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: rgba(9, 10, 15, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: none;
+    box-shadow: none;
+
+  .nav-shell {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: 3.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-brand {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .nav-brand:hover {
+    color: #ffffff;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+  }
+
+  .nav-link {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .nav-link:hover {
+    color: #fff;
+  }
+
+  .nav-link:focus-visible {
+    outline: 2px solid var(--brand-primary);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+</style>

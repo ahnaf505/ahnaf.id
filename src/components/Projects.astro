@@ -1,107 +1,344 @@
 ---
-interface Project {
-  name: string;
-  tagline: string;
-  description: string;
-  tags: string[];
-  link?: string;
-  featured?: boolean;
-}
-
-const projects: Project[] = [
-  {
-    name: "Teach4Learn",
-    tagline: "AI-powered learning, built differently.",
-    description:
-      "Teach4Learn flips the traditional study model on its head. Instead of passively reading or watching, you're challenged to teach — and in doing so, you actually learn. Powered by a conversational AI that plays the role of your student, it probes your understanding, surfaces gaps, and adapts to your pace. Think of it as the Feynman Technique, supercharged with the intelligence of a large language model.",
-    tags: ["AI / LLM", "EdTech", "Full Stack"],
-    link: "#",
-    featured: true,
-  },
-  {
-    name: "Project Two",
-    tagline: "Coming soon.",
-    description:
-      "Something new is in the works. Stay tuned.",
-    tags: ["TBD"],
-    featured: false,
-  },
-  {
-    name: "Project Three",
-    tagline: "Coming soon.",
-    description:
-      "Another idea taking shape.",
-    tags: ["TBD"],
-    featured: false,
-  },
-];
 ---
 
-<section id="projects" class="py-28 px-6">
-  <div class="max-w-5xl mx-auto">
-    <p class="text-xs font-semibold uppercase tracking-widest text-violet-400 mb-4">Projects</p>
-    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-14 leading-snug">
-      Things I've built
-    </h2>
+<section id="projects" class="projects">
+  <div class="projects-inner">
 
-    <div class="space-y-5">
-      <!-- Featured project -->
-      {projects.filter(p => p.featured).map(project => (
-        <div class="group relative p-8 rounded-2xl border border-violet-500/20 bg-gradient-to-br from-violet-950/30 to-transparent hover:border-violet-500/40 transition-all duration-300 hover:shadow-[0_0_40px_rgba(124,58,237,0.08)]">
-          <!-- "Latest" pill -->
-          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-violet-500/15 border border-violet-500/25 text-violet-300 text-xs font-medium mb-5">
-            <span class="w-1.5 h-1.5 bg-violet-400 rounded-full"></span>
-            Latest innovation
+    <div class="section-badge">
+      <span class="badge-index">02</span>
+      <span class="badge-title">Selected Work</span>
+    </div>
+
+    <div class="projects-header">
+      <h2 class="projects-heading">Crafted Products & Systems</h2>
+      <p class="projects-sub">
+        Production platforms designed for cognitive clarity, robust execution, and genuine utility.
+      </p>
+    </div>
+
+    <!-- Featured Case: Teach4Learn -->
+    <article class="featured-case">
+      <div class="case-header">
+        <div class="case-meta">
+          <span class="case-tag">Featured Project</span>
+          <span class="case-tag-sub">Active Product</span>
+        </div>
+        <a href="https://teach4learn.com" target="_blank" rel="noopener noreferrer" class="case-link-btn">
+          Visit Platform
+          <span class="link-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <div class="case-body">
+        <div class="case-main">
+          <h3 class="case-title">Teach4Learn</h3>
+          <p class="case-premise">The AI tutor that sharpens understanding by asking you to teach it.</p>
+          
+          <p class="case-narrative">
+            Most AI educational tools act as answer dispensers, which frequently produces the illusion of competence without real comprehension. Teach4Learn flips the dynamic using the Feynman Technique: the AI acts as an inquisitive, perceptive student that asks <em>you</em> to explain concepts.
+          </p>
+          <p class="case-narrative">
+            As you explain, the model identifies gaps, contradictions, and conceptual blurriness in real time, steering the dialogue to challenge your grasp rather than handing you passive summaries.
+          </p>
+        </div>
+
+        <div class="case-spec">
+          <div class="spec-block">
+            <span class="spec-label">Architecture</span>
+            <p class="spec-text">Conversational state engine, dynamic probe evaluation, real-time comprehension scoring</p>
           </div>
-
-          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
-            <div>
-              <h3 class="text-2xl font-bold text-white mb-1">{project.name}</h3>
-              <p class="text-violet-300 text-sm font-medium">{project.tagline}</p>
-            </div>
-            {project.link && (
-              <a
-                href={project.link}
-                class="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-violet-600 hover:bg-violet-500 text-white text-sm font-medium transition-all duration-200 hover:shadow-[0_0_20px_rgba(124,58,237,0.4)]"
-              >
-                Visit
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </a>
-            )}
+          <div class="spec-block">
+            <span class="spec-label">Domain</span>
+            <p class="spec-text">Applied Large Language Models, Cognitive EdTech, Full Stack</p>
           </div>
-
-          <p class="text-slate-400 leading-relaxed mb-6 max-w-3xl">{project.description}</p>
-
-          <div class="flex flex-wrap gap-2">
-            {project.tags.map(tag => (
-              <span class="px-3 py-1 rounded-full text-xs font-medium text-violet-300 border border-violet-500/20 bg-violet-500/5">
-                {tag}
-              </span>
-            ))}
+          <div class="spec-block">
+            <span class="spec-label">Status</span>
+            <p class="spec-text">Live and iterating</p>
           </div>
         </div>
-      ))}
+      </div>
+    </article>
 
-      <!-- Other projects grid -->
-      <div class="grid sm:grid-cols-2 gap-5 pt-2">
-        {projects.filter(p => !p.featured).map(project => (
-          <div class="p-6 rounded-xl border border-white/5 bg-white/[0.02] hover:border-white/10 transition-all duration-300">
-            <h3 class="text-lg font-semibold text-white mb-1">{project.name}</h3>
-            <p class="text-sm text-slate-500 mb-3">{project.tagline}</p>
-            <p class="text-sm text-slate-500 leading-relaxed mb-4">{project.description}</p>
-            <div class="flex flex-wrap gap-2">
-              {project.tags.map(tag => (
-                <span class="px-2.5 py-0.5 rounded-full text-xs text-slate-500 border border-white/5">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-        ))}
+    <!-- Lab / Engineering Notice -->
+    <div class="lab-card">
+      <div class="lab-content">
+        <span class="lab-label">Systems & Research Sandbox</span>
+        <h3 class="lab-title">Additional tooling, protocol analyzers & private engines</h3>
+        <p class="lab-desc">
+          Most systems engineering work—including security research, specialized extractors, data mining pipelines, and internal orchestration agents—is developed as modular private software. Case studies and technical teardowns are available on request.
+        </p>
+      </div>
+      <div class="lab-action">
+        <a href="#contact" class="lab-btn">Request technical briefing</a>
       </div>
     </div>
 
   </div>
 </section>
+
+<style>
+  .projects {
+    padding: 7rem 0;
+    border: none;
+  }
+
+  .projects-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    margin-bottom: 2rem;
+  }
+
+  .badge-index {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .badge-title {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .projects-header {
+    margin-bottom: 3.5rem;
+  }
+
+  .projects-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(1.85rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+  }
+
+  .projects-sub {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 54ch;
+    margin: 0;
+  }
+
+  .featured-case {
+    background: var(--surface);
+    border: none;
+    border-radius: 8px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .featured-case:hover {
+  }
+
+  .case-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1.5rem;
+    border: none;
+    margin-bottom: 2rem;
+  }
+
+  .case-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+  }
+
+  .case-tag {
+    color: #ffffff;
+    background: var(--brand-primary);
+    padding: 0.25rem 0.6rem;
+    font-weight: 600;
+    border-radius: 3px;
+    letter-spacing: 0.02em;
+  }
+
+  .case-tag-sub {
+    color: var(--muted);
+  }
+
+  .case-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .case-link-btn:hover {
+    color: #60a5fa;
+  }
+
+  .link-arrow {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+  }
+
+  .case-body {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 3.5rem;
+    align-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .case-body {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .featured-case {
+      padding: 1.75rem;
+    }
+  }
+
+  .case-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 3.25vw, 2.35rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+
+  .case-premise {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #60a5fa;
+    margin-bottom: 1.25rem;
+  }
+
+  .case-narrative {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--text-soft);
+    margin-bottom: 1rem;
+  }
+
+  .case-narrative em {
+    color: var(--text);
+    font-style: italic;
+  }
+
+  .case-spec {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background: var(--surface-raised);
+    border: none;
+    border-radius: 6px;
+    padding: 1.5rem;
+  }
+
+  .spec-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .spec-label {
+    font-family: var(--font-mono);
+    font-size: 0.725rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+  }
+
+  .spec-text {
+    font-size: 0.875rem;
+    color: var(--text);
+    line-height: 1.45;
+    margin: 0;
+  }
+
+  .lab-card {
+    background: var(--surface);
+    border: none;
+    border-radius: 8px;
+    padding: 2rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .lab-card {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.75rem;
+      gap: 1.5rem;
+    }
+  }
+
+  .lab-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: #60a5fa;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.5rem;
+  }
+
+  .lab-title {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+
+  .lab-desc {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--muted);
+    max-width: 58ch;
+    margin: 0;
+  }
+
+  .lab-btn {
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.7rem 1.2rem;
+    background: var(--surface-raised);
+    border: 1px solid var(--border-strong);
+    color: var(--text);
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+
+  .lab-btn:hover {
+    border-color: var(--brand-primary);
+    color: #fff;
+  }
+
+  .lab-btn:focus-visible,
+  .case-link-btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+</style>

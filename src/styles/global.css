@@ -1,42 +1,59 @@
 @import "tailwindcss";
 
-@layer base {
-  :root {
-    --color-bg: #0a0a0f;
-    --color-surface: #13131a;
-    --color-border: #1e1e2e;
-    --color-accent: #7c3aed;
-    --color-accent-light: #a78bfa;
-    --color-text: #e2e8f0;
-    --color-muted: #64748b;
-  }
+:root {
+  --bg: #090a0f;
+  --surface: #10121a;
+  --surface-raised: #161822;
+  --border: #1a1d28;
+  --border-strong: #282c3c;
+  --text: #eae8e1;
+  --text-soft: #c2c0b8;
+  --muted: #6b7280;
+  --muted-dark: #374151;
 
-  html {
-    @apply scroll-smooth;
-    background-color: var(--color-bg);
-    color: var(--color-text);
-  }
+  /* Palette */
+  --brand-primary: #1D4ED8;
+  --brand-hover: #174197;
+  --trust-deep: #13367C;
+  --accent: #1D4ED8;
+  --accent-hover: #174197;
+  --accent-dim: rgba(29, 78, 216, 0.16);
+  --accent-glow: rgba(29, 78, 216, 0.25);
 
-  body {
-    font-family: 'Inter', system-ui, sans-serif;
-  }
+  --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
 
-  ::selection {
-    background-color: #7c3aed33;
-    color: #a78bfa;
-  }
+html {
+  background-color: var(--bg);
+  color: var(--text-soft);
+  scroll-behavior: smooth;
+}
 
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: var(--color-bg);
-  }
-  ::-webkit-scrollbar-thumb {
-    background: var(--color-border);
-    border-radius: 3px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-accent);
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: radial-gradient(ellipse 70% 45% at 50% 0%, rgba(29, 78, 216, 0.08), transparent 70%);
+  background-attachment: fixed;
+}
+
+::selection {
+  background-color: var(--accent-dim);
+  color: var(--accent);
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
   }
 }
